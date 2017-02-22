@@ -52,4 +52,24 @@ export default class PersonService {
                 });
         });
     }
+
+    static updatePerson(index, person){
+        return new Promise((resolve, reject) => {
+            DataStorage.get("people")
+                .then((people) => {
+                    people = people || [];
+                    people[index] = person;
+                    DataStorage.set("people", people)
+                        .then(() => {
+                            resolve();
+                        })
+                        .catch((error) => {
+                            reject(error);
+                        });
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
 }

@@ -12,6 +12,10 @@ const SCENES_CONFIG = {
     "newPersonScene": {
         name: "Adicionar pessoa",
         component: scenes.NewPersonScene
+    },
+    "editPersonScene": {
+        name: "Editar pessoa",
+        component: scenes.EditPersonScene
     }
 };
 

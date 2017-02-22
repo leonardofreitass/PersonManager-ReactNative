@@ -39,23 +39,23 @@ export default class PersonList extends React.Component {
         this._reloadPeople();
     }
 
-    _personClickFactory(person){
-        return () => {
-            this.props.onPersonClick(person);
-        };
+    _personClick(person, index){
+        this.props.onPersonClick(person, index);
     }
 
     _mountPeopleList(){
         return this.state.people.map((person, index) => {
-            return (
-            <TouchableHighlight key={index} onPress={this._personClickFactory(person)}>
-                <View style={mainStyle.listItem}>
-                    <Text>{person.name}</Text>
-                    <Text style={mainStyle.smallText}>{person.email}</Text>
-                </View>
-            </TouchableHighlight>
+            if (person){
+                return (
+                    <TouchableHighlight key={index} onPress={this._personClick.bind(this, person, index)}>
+                        <View style={mainStyle.listItem}>
+                            <Text>{person.name}</Text>
+                            <Text style={mainStyle.smallText}>{person.email}</Text>
+                        </View>
+                    </TouchableHighlight>
 
-            )
+                )
+            }
         });
     }
 
