@@ -1,3 +1,10 @@
-import PersonList from './PersonList';
+import {PersonList, PersonForm} from './person/';
+import {InputWithLabel} from './input/';
+import {BackButton} from './button/';
 
-export {PersonList};
+export {
+    PersonList,
+    PersonForm,
+    InputWithLabel,
+    BackButton
+};

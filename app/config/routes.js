@@ -4,6 +4,14 @@ const SCENES_CONFIG = {
     "index": {
         name: "Início",
         component: scenes.IndexScene
+    },
+    "personScene": {
+        name: "{person.name}",
+        component: scenes.PersonScene
+    },
+    "newPersonScene": {
+        name: "Adicionar pessoa",
+        component: scenes.NewPersonScene
     }
 };
 

@@ -17,6 +17,9 @@ export default class PersonService {
         return new Promise((resolve, reject) => {
             DataStorage.get("people")
                 .then((people) => {
+                    if (!people){
+                        return resolve([]);
+                    }
                     let result = people.map((person) => {
                         if (person.email === email){
                             return person;
@@ -34,6 +37,7 @@ export default class PersonService {
         return new Promise((resolve, reject) => {
             DataStorage.get("people")
                 .then((people) => {
+                    people = people || [];
                     people.push(person);
                     DataStorage.set("people", people)
                         .then(() => {
