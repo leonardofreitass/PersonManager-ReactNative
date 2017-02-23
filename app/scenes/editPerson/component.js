@@ -5,6 +5,7 @@ import {View, Text, TextInput, ActivityIndicator} from 'react-native';
 import {PersonForm} from './../../components/';
 import {PersonService} from './../../services/';
 import mainStyle from "./../../style";
+import {routes} from "./../../config/";
 
 export default class EditPersonScene extends React.Component {
 
@@ -26,7 +27,12 @@ export default class EditPersonScene extends React.Component {
     }
 
     componentWillMount(){
-        this.setState({editPerson: this.props.data.person});
+        this.setState({editPerson: this._copyPerson(this.props.data.person)});
+    }
+
+    _copyPerson(person){
+        let json = JSON.stringify(person);
+        return JSON.parse(json);
     }
 
     _showError(){
@@ -34,9 +40,14 @@ export default class EditPersonScene extends React.Component {
     }
 
     _editPerson(){
-        PersonService.updatePerson(this.props.data.index, this.state.editPerson).then(
+        let index = this.props.data.index;
+        let person = this.state.editPerson;
+        PersonService.updatePerson(index, person).then(
             () => {
-                this.props.toBack();
+                let route = routes.SCENES_CONFIG.personScene;
+                route.data = {person, index};
+                route.titleProps.params = {name: person.name};
+                this.props.popToRoute(route);
             }
         );
     }

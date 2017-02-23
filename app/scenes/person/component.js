@@ -32,11 +32,9 @@ export default class PersonScene extends React.Component {
     _editPerson(){
         let person = this.props.data.person;
         let index = this.props.data.index;
-        let route = Object.assign(
-            {},
-            routes.SCENES_CONFIG.editPersonScene,
-            {data: {person, index}}
-        );
+        let route = routes.SCENES_CONFIG.editPersonScene;
+        route.data = {person, index};
+        route.titleProps.params = {name: person.name};
         this.props.toRoute(route);
     }
 }

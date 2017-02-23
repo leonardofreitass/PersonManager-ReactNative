@@ -2,7 +2,7 @@ import React from 'react';
 import Router from 'react-native-simple-router';
 
 import {routes} from './config/';
-import {BackButton} from './components/';
+import {BackButton, NavTitle} from './components/';
 import style from './style';
 
 export default class PersonManagerApp extends React.Component {

@@ -1,21 +1,34 @@
 import * as scenes from './../scenes/'
+import {NavTitle} from './../components/';
 
 const SCENES_CONFIG = {
     "index": {
-        name: "Início",
-        component: scenes.IndexScene
+        component: scenes.IndexScene,
+        titleComponent: NavTitle,
+        titleProps: {
+            title: "Início"
+        }
     },
     "personScene": {
-        name: "{person.name}",
-        component: scenes.PersonScene
+        component: scenes.PersonScene,
+        titleComponent: NavTitle,
+        titleProps: {
+            title: "{{name}}"
+        }
     },
     "newPersonScene": {
-        name: "Adicionar pessoa",
-        component: scenes.NewPersonScene
+        component: scenes.NewPersonScene,
+        titleComponent: NavTitle,
+        titleProps: {
+            title: "Adicionar pessoa"
+        }
     },
     "editPersonScene": {
-        name: "Editar pessoa",
-        component: scenes.EditPersonScene
+        component: scenes.EditPersonScene,
+        titleComponent: NavTitle,
+        titleProps: {
+            title: "Editar {{name}}"
+        }
     }
 };
 

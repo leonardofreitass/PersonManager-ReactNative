@@ -34,15 +34,13 @@ export default class IndexScene extends React.Component {
                 this._personList._reloadPeople();
             }
         });
-
+        
     }
 
     openPersonScene(person, index){
-        let route = Object.assign(
-            {},
-            routes.SCENES_CONFIG.personScene,
-            {name: person.name, data: {person, index}}
-        );
+        let route = routes.SCENES_CONFIG.personScene;
+        route.data = {person, index};
+        route.titleProps.params = {name: person.name};
         this.props.toRoute(route);
     }
 
