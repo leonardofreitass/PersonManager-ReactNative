@@ -72,4 +72,24 @@ export default class PersonService {
                 });
         });
     }
+
+    static removePerson(index){
+        return new Promise((resolve, reject) => {
+            DataStorage.get("people")
+                .then((people) => {
+                    people = people || [];
+                    people.splice(index, 1);
+                    DataStorage.set("people", people)
+                        .then(() => {
+                            resolve();
+                        })
+                        .catch((error) => {
+                            reject(error);
+                        });
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    }
 }

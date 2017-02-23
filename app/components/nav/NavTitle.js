@@ -41,8 +41,6 @@ export default class NavTitle extends React.Component {
             }
         }
 
-        console.log(_title);
-
        return _title;
     }
 }
